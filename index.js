@@ -16,8 +16,8 @@ app.get('/calculate-returns', (req, res) => {
   let marketPrice = parseFloat(req.query.marketPrice);
   let quantity = parseInt(req.query.quantity);
 
-  const returns = (marketPrice - boughtAt) * quantity;
-  res.send(returns.toString());
+  const Return  = (marketPrice - boughtAt) * quantity;
+  res.send(Return.toString());
 });
 //calculate-returns?boughtAt=300&marketPrice=400&quantity=2
 
@@ -28,18 +28,18 @@ app.get('/total-returns', (req, res) => {
   let stock3 = parseFloat(req.query.stock3);
   let stock4 = parseFloat(req.query.stock4);
 
-  let totalReturns = stock1 + stock2 + stock3 + stock4;
-  res.send(totalReturns.toString());
+  let totalreturns = stock1 + stock2 + stock3 + stock4;
+  res.send(totalreturns.toString());
 });
 //total-returns?stock1=100&stock2=200&stock3=200&stock4=400
 
 //Endpoint 3: Calculate the Return Percentage
 app.get('/calculate-return-percentage', (req, res) => {
   let boughtAt = parseFloat(req.query.boughtAt);
-  let returns = parseFloat(req.query.returns);
+  let returns  = parseFloat(req.query.returns);
 
-  const returnPercentage = (returns / boughtAt) * 100;
-  res.send(returnPercentage.toString());
+  const returnpercentage = (returns / boughtAt) * 100;
+  res.send(returnpercentage.toString());
 });
 ///calculate-return-percentage?boughtAt=400&returns=200
 
@@ -50,20 +50,21 @@ app.get('/total-return-percentage', (req, res) => {
   let stock3 = parseFloat(req.query.stock3);
   let stock4 = parseFloat(req.query.stock4);
 
-  let returnPercentage = stock1 + stock2 + stock3 + stock4;
-  res.send(returnPercentage.toString());
+  let returnpercentage = stock1 + stock2 + stock3 + stock4;
+  res.send(returnpercentage.toString());
 });
 //total-return-percentage?stock1=10&stock2=20&stock3=20&stock4=40
 
 //Endpoint 5: Identify the Status of Stocks based on their Return Value
 app.get('/status', (req, res) => {
-  let returnPercentage = parseFloat(req.query.returnPercentage);
+  let returnPercentage  = parseFloat(req.query.returnPercentage );
 
   let status;
-  if (returnPercentage > 0) {
+  if (returnPercentage  > 0) {
     status = 'profit';
   } else {
     status = 'loss';
+    
   }
   res.send(status);
 });
